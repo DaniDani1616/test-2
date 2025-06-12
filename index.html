@@ -2,17 +2,12 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leaderboard - Test IQ Avansat</title>
   <style>
-    /* =====================
-       Stiluri de bază
-       ===================== */
     :root {
-      /* Culoarea de fundal principală, implicită */
-      --bg-color: #4e54c8;
-
-      /* Variabile pentru butoane, carduri etc. */
+      --gradient-1: #4e54c8;
+      --gradient-2: #8f94fb;
       --btn-grad-start: #a1ffce;
       --btn-grad-end: #faffd1;
       --card-bg: rgba(255,255,255,0.3);
@@ -25,56 +20,50 @@
       --silver: #C0C0C0;
       --bronze: #CD7F32;
     }
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
     }
-    html, body {
-      height: 100%;
+    html, body { 
+      height: 100%; 
       scroll-behavior: smooth;
-      /* Safe area pentru iPhone */
-      padding-left: env(safe-area-inset-left);
-      padding-right: env(safe-area-inset-right);
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
     }
     body {
-      background-color: var(--bg-color);
+      background: linear-gradient(135deg, var(--gradient-1));
       font-family: 'Segoe UI', 'Poppins', Tahoma, sans-serif;
-      display: flex;
-      flex-direction: column;
+      display: flex; 
+      flex-direction: column; 
       color: var(--text-color);
       overflow-x: hidden;
       line-height: 1.6;
     }
     header {
-      display: flex;
-      align-items: center;
+      display: flex; 
+      align-items: center; 
       justify-content: space-between;
-      padding: 15px 30px;
+      padding: 15px 30px; 
       background: rgba(255,255,255,0.2);
-      border-radius: 16px;
-      margin: 20px auto;
-      max-width: calc(100% - 20px);
+      border-radius: 16px; 
+      margin: 20px;
       backdrop-filter: blur(10px);
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       border: 1px solid var(--card-border);
     }
-    .nav-icons {
-      display: flex;
-      gap: 15px;
+    .nav-icons { 
+      display: flex; 
+      gap: 15px; 
     }
-    .nav-icons button {
-      background: rgba(255,255,255,0.3);
+    .nav-icons button { 
+      background: rgba(255,255,255,0.3); 
       border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+      width: 44px; 
+      height: 44px; 
+      border-radius: 10px; 
       cursor: pointer;
-      display: flex;
-      align-items: center;
+      display: flex; 
+      align-items: center; 
       justify-content: center;
       transition: all 0.3s ease;
     }
@@ -82,46 +71,45 @@
       transform: translateY(-2px);
       background: rgba(255,255,255,0.4);
     }
-    .nav-icons svg {
-      width: 22px;
-      height: 22px;
-      fill: white;
+    .nav-icons svg { 
+      width: 22px; 
+      height: 22px; 
+      fill: white; 
       transition: transform 0.3s;
     }
     .nav-icons button:hover svg {
       transform: scale(1.1);
     }
     #login-btn, #user-info {
-      padding: 10px 25px;
+      padding: 10px 25px; 
       background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
-      border: none;
-      border-radius: 50px;
+      border: none; 
+      border-radius: 50px; 
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      font-weight: bold;
-      cursor: pointer;
-      color: var(--btn-text);
+      font-weight: bold; 
+      cursor: pointer; 
+      color: var(--btn-text); 
       margin-left: 15px;
       transition: all 0.3s ease;
       font-size: 1rem;
-      white-space: nowrap;
     }
     #login-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     }
-    #user-info {
-      display: none;
-      background: rgba(255,255,255,0.7);
-      color: #333;
+    #user-info { 
+      display: none; 
+      background: rgba(255,255,255,0.7); 
+      color: #333; 
       font-weight: 600;
       padding: 10px 20px;
     }
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
+    main { 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      padding: 20px;
     }
     .leaderboard-container {
       width: 90%;
@@ -137,7 +125,7 @@
     }
     .login-prompt {
       text-align: center;
-      padding: 50px 20px;
+      padding: 50px;
       background: rgba(255,255,255,0.25);
       backdrop-filter: blur(12px);
       border-radius: 25px;
@@ -149,7 +137,6 @@
     .login-prompt h2 {
       margin-bottom: 20px;
       color: var(--text-color);
-      font-size: 1.2rem;
     }
     #prompt-login-btn {
       margin-top: 20px;
@@ -163,7 +150,6 @@
       font-size: 1.1rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       transition: all 0.3s;
-      white-space: nowrap;
     }
     #prompt-login-btn:hover {
       transform: translateY(-3px);
@@ -174,24 +160,19 @@
       margin-bottom: 30px;
     }
     .leaderboard-header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 10px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      word-break: break-word;
-    }
-    .leaderboard-header p {
-      font-size: 1rem;
-      word-break: break-word;
     }
     .leaderboard-filters {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 15px;
       margin-bottom: 25px;
       flex-wrap: wrap;
     }
     .filter-btn {
-      padding: 8px 16px;
+      padding: 10px 20px;
       background: rgba(255,255,255,0.3);
       border: none;
       border-radius: 50px;
@@ -199,8 +180,6 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 0.9rem;
-      white-space: nowrap;
     }
     .filter-btn.active {
       background: var(--primary-accent);
@@ -212,9 +191,8 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 20px;
+      gap: 30px;
       margin-bottom: 30px;
-      flex-wrap: wrap;
     }
     .podium-place {
       display: flex;
@@ -225,7 +203,7 @@
       color: var(--text-color);
     }
     .podium-place .podium-block {
-      width: 80px;
+      width: 100px;
       border-radius: 8px 8px 0 0;
       display: flex;
       align-items: flex-end;
@@ -234,327 +212,57 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .podium-place.first .podium-block {
-      height: 100px;
+      height: 120px;
       background: rgba(255,255,255,0.35);
     }
     .podium-place.second .podium-block {
-      height: 75px;
+      height: 90px;
       background: rgba(255,255,255,0.30);
     }
     .podium-place.third .podium-block {
-      height: 60px;
+      height: 70px;
       background: rgba(255,255,255,0.28);
     }
     .podium-avatar {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--btn-text);
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      margin-top: -25px; /* suprapune puțin peste blocul podium */
+      margin-top: -30px; /* suprapune puțin peste blocul podium, dar nu peste text */
       z-index: 1;
-      word-break: break-word;
     }
     .podium-name {
-      margin-top: 6px;
-      font-size: 0.85rem;
+      margin-top: 8px;
+      font-size: 0.95rem;
       text-align: center;
-      max-width: 80px;
+      max-width: 100px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .podium-score {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 700;
       margin-top: 4px;
       text-align: center;
     }
     .podium-place.first .crown {
       position: absolute;
-      top: -30px;
-      font-size: 1.4rem;
+      top: -35px;
+      font-size: 1.6rem;
     }
     .podium-medal {
       margin-top: 4px;
-      font-size: 1rem;
-    }
-
-    /* --- Restul clasamentului: details + rânduri aerisite --- */
-    details.rest-leaderboard {
-      margin-top: 20px;
-      color: var(--text-color);
-      width: 100%;
-    }
-    details.rest-leaderboard summary {
-      cursor: pointer;
-      font-weight: 600;
-      padding: 12px 18px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 8px;
-      display: inline-block;
-      user-select: none;
-      margin-bottom: 10px;
-      transition: background 0.3s;
-      font-size: 0.95rem;
-    }
-    details.rest-leaderboard[open] summary {
-      background: var(--primary-accent);
-      color: #fff;
-    }
-    .rest-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .leaderboard-row {
-      display: flex;
-      align-items: center;
-      padding: 12px 20px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.2);
-      transition: background 0.3s;
-      position: relative;
-      flex-wrap: wrap;
-    }
-    .leaderboard-row:hover {
-      background: rgba(255,255,255,0.25);
-    }
-    .leaderboard-row.current-user {
-      background: rgba(255, 157, 0, 0.25);
-      border: 2px solid var(--primary-accent);
-    }
-    /* Layout: container pentru poziție+medalie, avatar, info, scor */
-    .row-position-medal {
-      display: flex;
-      align-items: center;
-      width: 60px;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-bottom: 8px; /* pentru mobil, ca să nu se înghesuie */
-    }
-    .row-position-medal .position {
       font-size: 1.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-right: 6px;
     }
-    .row-position-medal .position-1 {
-      color: var(--gold);
-    }
-    .row-position-medal .position-2 {
-      color: var(--silver);
-    }
-    .row-position-medal .position-3 {
-      color: var(--bronze);
-    }
-    .row-position-medal .medal-inline {
-      font-size: 1rem;
-    }
-    .user-avatar {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--btn-text);
-      margin-right: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      flex-shrink: 0;
-      margin-bottom: 8px;
-      word-break: break-word;
-    }
-    .user-info {
-      flex: 1;
-      overflow: hidden;
-    }
-    .user-info h3 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .user-info p {
-      font-size: 0.85rem;
-      opacity: 0.8;
-      word-break: break-word;
-    }
-    .user-score {
-      font-size: 1.2rem;
-      font-weight: 700;
-      min-width: 60px;
-      text-align: right;
-      flex-shrink: 0;
-      margin-left: 15px;
-      margin-top: 8px;
-    }
-    .current-user-tag {
-      margin-left: 10px;
-      background: var(--primary-accent);
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      flex-shrink: 0;
-      margin-top: 6px;
-    }
-
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-    .pagination-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      border: none;
-      color: var(--text-color);
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      font-size: 0.9rem;
-    }
-    .pagination-btn.active {
-      background: var(--primary-accent);
-      color: white;
-    }
-    .pagination-btn:hover:not(.active) {
-      background: rgba(255,255,255,0.4);
-    }
-    .back-to-home {
-      display: block;
-      margin: 30px auto;
-      padding: 12px 35px;
-      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
-      border: none;
-      border-radius: 50px;
-      color: var(--btn-text);
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      max-width: 250px;
-      text-align: center;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .back-to-home:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    /* Buton teme */
-    #theme-btn {
-      position: fixed;
-      bottom: calc(25px + env(safe-area-inset-bottom));
-      left: 25px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
-      border: none;
-      border-radius: 50%;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-      color: var(--btn-text);
-      font-size: 22px;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    #theme-btn:hover {
-      transform: rotate(15deg) scale(1.1);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-    }
-    #theme-selector {
-      position: fixed;
-      bottom: calc(95px + env(safe-area-inset-bottom));
-      left: 25px;
-      background: rgba(255,255,255,0.95);
-      padding: 15px;
-      border-radius: 15px;
-      display: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      z-index: 100;
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    #theme-selector button {
-      margin: 8px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: all 0.2s;
-      background: transparent;
-      color: #333;
-      white-space: nowrap;
-    }
-    #theme-selector button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-
-    /* Language toggle */
-    .lang-toggle {
-      position: fixed;
-      bottom: calc(25px + env(safe-area-inset-bottom));
-      left: auto;
-      right: 25px;
-      background: rgba(255,255,255,0.25);
-      border-radius: 50px;
-      padding: 6px;
-      display: flex;
-      backdrop-filter: blur(6px);
-      z-index: 10;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-    .lang-btn {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 50px;
-      background: transparent;
-      color: var(--text-color);
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-    .lang-btn.active {
-      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
-      color: var(--btn-text);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-    .lang-btn:hover:not(.active) {
-      background: rgba(255,255,255,0.15);
-    }
-
-    /* =====================
-       Media Queries pentru mobil / ecrane înguste
-       ===================== */
+    /* Responsive podium */
     @media (max-width: 768px) {
       header {
         padding: 12px 20px;
@@ -634,6 +342,130 @@
         max-width: calc(100% - 20px);
       }
     }
+
+    /* --- Restul clasamentului: details + rânduri aerisite --- */
+    details.rest-leaderboard {
+      margin-top: 20px;
+      color: var(--text-color);
+    }
+    details.rest-leaderboard summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 12px 18px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 8px;
+      display: inline-block;
+      user-select: none;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+    details.rest-leaderboard[open] summary {
+      background: var(--primary-accent);
+      color: #fff;
+    }
+    .rest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .leaderboard-list {
+      width: 100%;
+    }
+    .leaderboard-row {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.2);
+      /* eliminăm hover transform/color schimbare sau le facem foarte subtile */
+      transition: background 0.3s;
+      position: relative;
+    }
+    .leaderboard-row:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    .leaderboard-row.current-user {
+      background: rgba(255, 157, 0, 0.25);
+      border: 2px solid var(--primary-accent);
+    }
+    /* Layout: container pentru poziție+medalie, avatar, info, scor */
+    .row-position-medal {
+      display: flex;
+      align-items: center;
+      width: 70px;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .row-position-medal .position {
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-right: 6px;
+    }
+    .row-position-medal .position-1 {
+      color: var(--gold);
+    }
+    .row-position-medal .position-2 {
+      color: var(--silver);
+    }
+    .row-position-medal .position-3 {
+      color: var(--bronze);
+    }
+    .row-position-medal .medal-inline {
+      font-size: 1.2rem;
+      /* culoare neutră deoarece iconul e deja emoji colorat */
+    }
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--btn-text);
+      margin-right: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+    .user-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    .user-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .user-info p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    .user-score {
+      font-size: 1.4rem;
+      font-weight: 700;
+      min-width: 80px;
+      text-align: right;
+      flex-shrink: 0;
+      margin-left: 15px;
+    }
+    .current-user-tag {
+      margin-left: 10px;
+      background: var(--primary-accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+    /* Responsive rând */
     @media (max-width: 480px) {
       header {
         padding: 10px 15px;
@@ -729,6 +561,137 @@
         right: 15px;
       }
     }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .pagination-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      color: var(--text-color);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .pagination-btn.active {
+      background: var(--primary-accent);
+      color: white;
+    }
+    .pagination-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.4);
+    }
+    .back-to-home {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 35px;
+      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
+      border: none;
+      border-radius: 50px;
+      color: var(--btn-text);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      max-width: 250px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .back-to-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Buton teme */
+    #theme-btn { 
+      position: fixed; 
+      bottom: 25px; 
+      left: 25px;
+      width: 55px; 
+      height: 55px;
+      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
+      border: none; 
+      border-radius: 50%; 
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      cursor: pointer; 
+      color: var(--btn-text); 
+      font-size: 22px;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    #theme-btn:hover {
+      transform: rotate(15deg) scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+    }
+    #theme-selector { 
+      position: fixed; 
+      bottom: 95px; 
+      left: 25px;
+      background: rgba(255,255,255,0.95); 
+      padding: 15px; 
+      border-radius: 15px;
+      display: none; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      z-index: 100;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    #theme-selector button { 
+      margin: 8px; 
+      padding: 10px 15px;
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    #theme-selector button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      bottom: 25px;
+      left: 100px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 6px;
+      display: flex;
+      backdrop-filter: blur(6px);
+      z-index: 10;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .lang-btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 50px;
+      background: transparent;
+      color: var(--text-color);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end));
+      color: var(--btn-text);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.15);
+    }
   </style>
 </head>
 <body>
@@ -739,7 +702,7 @@
 
   <header>
     <div class="nav-icons">
-      <button title="Acasă"><a href="#"><svg viewBox="0 0 576 512"><path d="M280.37 148.26L96 300.11V464a16 16 0 0016 16l112-.29a16 16 0 0016-15.74V368a16 16 0 0116-16h64a16 16 0 0116 16v96a16 16 0 0016 16l112 .29a16 16 0 0016-16V300L295.67 148.26a12.19 12.19 0 00-15.3 0z"/></svg></a></button>
+      <button title="Acasă"><a href="file:///C:/Users/DaniTom/Desktop/Iq_Eq/index.html"><svg viewBox="0 0 576 512"><path d="M280.37 148.26L96 300.11V464a16 16 0 0016 16l112-.29a16 16 0 0016-15.74V368a16 16 0 0116-16h64a16 16 0 0116 16v96a16 16 0 0016 16l112 .29a16 16 0 0016-16V300L295.67 148.26a12.19 12.19 0 00-15.3 0z"/></svg></a></button>
       <button title="Contact"><svg viewBox="0 0 512 512"><path d="M502.3 190.8L320 8.5C312.6 1.1 303.3-1.3 295.5 2.1s-12 12.7-12 21.3v96.7L24.7 332.1c-8.4 4.9-12.9 14-12.7 23.5s5.4 18.6 13.6 23.6l182.4 119c8.6 5.6 19.6 5.6 28.1-0.2l182.1-119c8.2-5.1 13.1-14.8 12.3-24.6s-6.1-18.3-14.8-22z"/></svg></button>
     </div>
     <div>
@@ -794,11 +757,10 @@
 
   <button id="theme-btn">🎨</button>
   <div id="theme-selector">
-    <!-- Butoane de temă: data-bg conține culoarea de fundal dorită -->
-    <button data-bg="#4e54c8" data-btn1="#a1ffce" data-btn2="#faffd1">Albastru</button>
-    <button data-bg="#ff6a00" data-btn1="#ffe29f" data-btn2="#ffa99f">Portocaliu</button>
-    <button data-bg="#11998e" data-btn1="#e0c3fc" data-btn2="#8ec5fc">Verde</button>
-    <button data-bg="#fc4a1a" data-btn1="#ff9d00" data-btn2="#ffcc70">Auriu</button>
+    <button data-g1="#4e54c8" data-g2="#8f94fb" data-b1="#a1ffce" data-b2="#faffd1">Albastru</button>
+    <button data-g1="#ff6a00" data-g2="#ee0979" data-b1="#ffe29f" data-b2="#ffa99f">Portocaliu</button>
+    <button data-g1="#11998e" data-g2="#38ef7d" data-b1="#e0c3fc" data-b2="#8ec5fc">Verde</button>
+    <button data-g1="#fc4a1a" data-g2="#f7b733" data-b1="#ff9d00" data-b2="#ffcc70">Auriu</button>
   </div>
 
   <script>
@@ -1044,15 +1006,13 @@
       selector.style.display = selector.style.display === 'block' ? 'none' : 'block';
     });
     selector.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-      const bg = btn.dataset.bg;
-      const b1 = btn.dataset.btn1, b2 = btn.dataset.btn2;
-      // Setează culoarea de fundal unică
-      document.documentElement.style.setProperty('--bg-color', bg);
-      // Păstrează gradientul pentru butoane/avatar dacă dorești
+      const g1 = btn.dataset.g1, g2 = btn.dataset.g2, b1 = btn.dataset.b1, b2 = btn.dataset.b2;
+      document.documentElement.style.setProperty('--gradient-1', g1);
+      document.documentElement.style.setProperty('--gradient-2', g2);
       document.documentElement.style.setProperty('--btn-grad-start', b1);
       document.documentElement.style.setProperty('--btn-grad-end', b2);
       selector.style.display = 'none';
-      // Reafișează clasamentul dacă este vizibil
+      // După schimbare temă, reafișează clasamentul dacă este vizibil
       if (document.getElementById('leaderboard-container').style.display === 'block') {
         displayLeaderboard();
       }
